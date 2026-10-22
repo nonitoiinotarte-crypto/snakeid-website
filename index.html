@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#102b22">
+  <meta name="description" content="Explore snake species worldwide with SnakeID, powered by iNaturalist species data and observations.">
+  <title>SnakeID — Worldwide Snake Guide</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/"><span class="brand-mark">S</span><span>Snake<span class="accent">ID</span><small>WORLDWIDE SNAKE GUIDE</small></span></a>
+    <nav class="nav-actions"><a class="nav-link" href="#safety">Safety first</a><a class="nav-link admin-nav" href="#admin">Scan dashboard ↗</a></nav>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><span></span> EXPLORE THE WORLD OF SNAKES</div>
+        <h1>Know what<br>you're <em>looking at.</em></h1>
+        <p>Explore snake species, reference photos, habitat notes and community sightings from around the world.</p>
+        <a class="primary-link" href="#identify">Explore species <span>↓</span></a>
+        <div class="trust-row"><span>🌍 Worldwide references</span><span>● iNaturalist data</span></div>
+      </div>
+      <div class="hero-art" role="img" aria-label="Illustration of a snake">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="hero-label"><span class="live-dot"></span> FIELD GUIDE <b>01 / 05</b></div>
+        <div class="snake-emoji">🐍</div>
+        <div class="art-caption"><span>REPTILIA / SERPENTES</span><b>Curiosity. With caution.</b></div>
+      </div>
+    </section>
+
+    <section id="identify" class="section">
+      <div class="section-head"><div><div class="eyebrow dark">SPECIES EXPLORER</div><h2>Find a snake</h2></div><span class="small-note">Powered by iNaturalist API</span></div>
+      <div class="search-panel">
+        <label for="speciesQuery">Common name or scientific name</label>
+        <div class="search-row"><span class="search-icon">⌕</span><input id="speciesQuery" type="search" placeholder="Try “cobra”, “python” or “Naja naja”" autocomplete="off"><button id="searchBtn">Search species <span>→</span></button></div>
+        <p class="hint">Search results are reference matches, not a confirmed identification of your snake.</p>
+      </div>
+      <div id="status" class="status" role="status" aria-live="polite">Search a species to begin exploring.</div>
+      <div id="results" class="species-grid"></div>
+      <div id="detail" class="detail-panel hidden"></div>
+    </section>
+
+    <section class="photo-section">
+      <div class="photo-copy"><div class="eyebrow">PHOTO WORKSPACE</div><h2>Have a photo?</h2><p>Preview and validate a photo, then compare it with reference species. Automatic image recognition is not enabled in this starter version.</p></div>
+      <form id="photoForm" class="upload-card"><label class="dropzone" for="photo"><span class="upload-symbol">↑</span><strong>Choose a snake photo</strong><span>JPG, PNG or WebP · Max 8 MB</span><input id="photo" name="photo" type="file" accept="image/jpeg,image/png,image/webp" required></label><img id="preview" class="preview hidden" alt="Selected snake photo preview"><button class="secondary-btn" type="submit">Validate photo</button><p id="uploadStatus" class="hint" role="status"></p></form>
+    </section>
+
+    <section id="safety" class="safety-section">
+      <div class="safety-icon">!</div><div><div class="eyebrow">SAFETY NOTICE</div><h2>Never rely on a photo alone.</h2><p>Keep your distance. Do not touch, corner, or attempt to capture a snake. Treat an unidentified snake as potentially venomous. If bitten, seek emergency medical care immediately; keep still and follow local emergency guidance. Do not cut the wound, suck out venom, or apply a tourniquet.</p></div>
+    </section>
+
+    <section class="history-section"><div class="section-head"><div><div class="eyebrow dark">YOUR BROWSER</div><h2>Recent searches</h2></div><button id="clearHistory" class="text-btn">Clear history</button></div><div id="history" class="history-list"><p class="hint">Your searches will appear here on this device.</p></div></section>
+  </main>
+  <section id="admin" class="admin-section">
+    <div class="section-head"><div><div class="eyebrow dark">SITE ACTIVITY</div><h2>Scan logs & statistics</h2></div><button id="refreshAdmin" class="text-btn">Refresh data ↻</button></div>
+    <p class="hint">This dashboard shows records saved by this server. It is currently not password-protected; add authentication before deploying publicly.</p>
+    <div class="stats-grid">
+      <div class="stat-card"><span>Total logged events</span><strong id="statTotal">—</strong></div>
+      <div class="stat-card"><span>Events today</span><strong id="statToday">—</strong></div>
+      <div class="stat-card"><span>Species search events</span><strong id="statIdentified">—</strong></div>
+      <div class="stat-card"><span>Photo uploads validated</span><strong id="statPhotos">—</strong></div>
+    </div>
+    <div class="admin-columns">
+      <div class="admin-box"><h3>Last 7 days</h3><div id="dailyStats" class="daily-bars"></div></div>
+      <div class="admin-box"><h3>Most searched species</h3><div id="topSpecies" class="top-species"></div></div>
+    </div>
+    <div class="admin-box table-box"><h3>Recent scan log</h3><div class="table-scroll"><table class="scan-table"><thead><tr><th>Date & time</th><th>Species / event</th><th>Type</th><th>Status</th></tr></thead><tbody id="scanLogRows"><tr><td colspan="4">Loading records…</td></tr></tbody></table></div></div>
+  </section>
+  <footer><a class="brand footer-brand" href="/"><span class="brand-mark">S</span><span>Snake<span class="accent">ID</span><small>WORLDWIDE SNAKE GUIDE</small></span></a><p>Species data and observations from iNaturalist. Images and records belong to their respective contributors.</p><a href="https://www.inaturalist.org/" target="_blank" rel="noreferrer">Explore iNaturalist ↗</a></footer>
+  <script src="/app.js" defer></script>
+</body>
+</html>
